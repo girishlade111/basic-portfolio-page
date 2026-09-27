@@ -1,30 +1,75 @@
 # Basic Portfolio Page
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+A visually striking personal portfolio page generated with [v0](https://v0.app): a space-themed hero (animated interstellar nebula canvas + particle field), a media showcase drop zone, and a contact section — all client-rendered, fully static, and deployable to any static host.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/gileb64375-5584s-projects/v0-basic-portfolio-page)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/TZ69qE4kfc7)
+## What it does
 
-## Overview
+- Full-screen **hero** with staggered fade/slide entrance, social icons, and smooth-scroll navigation
+- **Interstellar Nebula** — canvas-rendered animated nebula backdrop
+- **Particle Field** — drifting canvas particles layered over the nebula
+- **Media Drop Zone** — drag-and-drop area to preview media files client-side (nothing is uploaded)
+- **Contact section** with shadcn/ui form inputs
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+## Features
 
-## Deployment
+- Animated canvas backgrounds (nebula + particles), pure client-side
+- Responsive Tailwind layout with `next-themes` dark theme
+- shadcn/ui components (`button`, `card`, `input`, `textarea`)
+- Smooth-scroll section navigation
+- Geist font family
 
-Your project is live at:
+## Tech stack
 
-**[https://vercel.com/gileb64375-5584s-projects/v0-basic-portfolio-page](https://vercel.com/gileb64375-5584s-projects/v0-basic-portfolio-page)**
+- **Next.js 15** (App Router, `output: "export"` static build)
+- **React 19**, **TypeScript**
+- **Tailwind CSS 4**, `tw-animate-css`
+- **shadcn/ui**, **Radix UI** primitives, **Lucide** icons
+- **pnpm** (package manager)
 
-## Build your app
+## Quick start
 
-Continue building your app on:
+```bash
+# 1. Install dependencies
+npm install
 
-**[https://v0.app/chat/projects/TZ69qE4kfc7](https://v0.app/chat/projects/TZ69qE4kfc7)**
+# 2. Run the dev server
+npm run dev
+# → http://localhost:3000
 
-## How It Works
+# 3. Build a static export
+npm run build
+# → static HTML in ./out
+```
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+## Project structure
+
+```
+basic-portfolio-page/
+├── app/
+│   ├── page.tsx                 # Hero, media showcase, contact sections
+│   ├── layout.tsx               # Root layout, theme provider
+│   └── globals.css
+├── components/
+│   ├── interstellar-nebula.tsx  # Animated nebula canvas background
+│   ├── particle-field.tsx       # Drifting particle canvas layer
+│   ├── media-drop-zone.tsx      # Client-side drag-and-drop media preview
+│   ├── theme-provider.tsx
+│   └── ui/                      # shadcn/ui primitives
+├── lib/utils.ts
+├── next.config.mjs              # output: "export"
+└── tailwind.config.ts
+```
+
+## Environment variables
+
+None.
+
+## Deployment notes
+
+- Fully static: `npm run build` emits `./out` — deploy to **Cloudflare Pages**, GitHub Pages, or any static host.
+- No API routes, no server actions, no secrets — everything renders in the browser.
+- Note: this repo pins `next@15.2.4`; if you take it to production, bump to the latest patched 15.x (e.g. 15.2.8+) to cover known Next.js security advisories.
+
+---
+
+Built by Girish Lade — [ladestack.in](https://ladestack.in)
